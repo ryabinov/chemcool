@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: web-api-gateway
+  cloud:
+    config:
+      name: web-api-gateway, web-api-gateway-routes
+      discovery:
+        enabled: true
+        service-id: config-service
+      username: ${SPRING_CLOUD_CONFIG_USERNAME}
+      password: ${SPRING_CLOUD_CONFIG_PASSWORD}
+      fail-fast: true
+      retry:
+        initial-interval: 2000
+        multiplier: 1.1
+        max-attempts: 50
+        max-interval: 1000
+
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    service-url:
+      defaultZone: ${EUREKA_CLIENT_SERVICEURL_DEFAULTZONE:http://localhost:8761/eureka}

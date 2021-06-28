@@ -1,0 +1,28 @@
+spring:
+  appclication:
+    name: tasks-application
+  jpa:
+    database: postgresql
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:postgresql://localhost:5432/tasks
+    username: mick
+    password: mick
+    platform: postgres
+    driver-class-name: org.postgresql.Driver
+
+server:
+  port: 0
+  servlet:
+    context-path: /tasks-application/
+
+kafka:
+  server: http://localhost:9092
+  taskCemEquationsGroupId: task-chemistry-equations.1
+  taskChemFixedAnswerGroupId: task-chemistry-answer.1
+  taskChemMatchesGroupId: task-chemistry-matches.1
+  taskChemSingleSelectGroupId: task-chemistry-singleSelect.1
+
+

@@ -1,0 +1,41 @@
+zuul:
+  ribbon:
+    eager-load:
+      enabled: true
+  sensitive-headers:
+  routes:
+
+    lesson-application:
+      path: /lesson-application/**
+      service-id: lesson-application
+      stripPrefix: false
+
+    theory-application:
+      path: /theory-application/**
+      service-id: theory-application
+      stripPrefix: false
+
+    tasks-application:
+      path: /tasks-application/**
+      service-id: tasks-application
+      stripPrefix: false
+
+    registration-application:
+      path: /registration-application/**
+      service-id: registration-application
+      stripPrefix: false
+
+    answers-task-application:
+      path: /answers-task-application/**
+      service-id: answers-task-application
+      stripPrefix: false
+
+    authorization-application:
+      path: /authorization-application/**
+      service-id: authorization-application
+      url: http://localhost:8090
+      sensitiveHeaders:
+      stripPrefix: false
+
+  ignored-services: '*'
+  retryable: true

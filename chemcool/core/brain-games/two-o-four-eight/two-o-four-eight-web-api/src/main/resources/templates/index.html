@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title> Chem Two-O-Four-Eight</title>
+ 	</head>
+ 	<body>
+		<div style="text-align: center;">
+			<a style="	cursor: pointer; padding-left: 10%;" onclick="return load();">Новая игра</a>
+			<div id="canvas"></div>
+			<h2>Очки : <div style="display:inline;" id="score"></div></h2>
+			<b> Используй стрелки чтобы играть </b>
+		</div>
+		<script th:inline="javascript" type="text/javascript" th:src="@{/js/main.js}" src="../static/js/main.js"></script>
+ 	</body>
+</html>

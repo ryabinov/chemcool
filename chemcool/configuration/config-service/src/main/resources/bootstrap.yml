@@ -1,0 +1,70 @@
+server:
+  port: ${SERVER_PORT:8888}
+
+spring:
+  application:
+    name: config-service
+  cloud:
+    config:
+      server:
+        encrypt:
+          enabled: false
+        git:
+          clone-on-start: true
+          force-pull: true
+          uri: ${SPRING_CLOUD_CONFIG_SERVER_GIT_URL}
+          searchPaths: ${SPRING_CLOUD_CONFIG_SERVER_GIT_SEARCHPATHS}
+          username: ${SPRING_CLOUD_CONFIG_SERVER_GIT_USERNAME}
+          password: ${SPRING_CLOUD_CONFIG_SERVER_GIT_PASSWORD}
+  security:
+    user:
+      name: ${SPRING_SECURITY_USER_NAME}
+      password: ${SPRING_SECURITY_USER_PASSWORD}
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    service-url:
+      defaultZone: ${EUREKA_CLIENT_SERVICEURL_DEFAULTZONE:http://localhost:8761/eureka}
+---
+spring:
+  profiles: test-localhost
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: ${SPRING_CLOUD_CONFIG_SERVER_NATIVE_SEARCHLOCATIONS}
+  security:
+    user:
+      name: ${SPRING_SECURITY_USER_NAME:config-service-user}
+      password: ${SPRING_SECURITY_USER_PASSWORD}
+server:
+  port: ${SERVER_PORT:8888}
+
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_CLIENT_SERVICEURL_DEFAULTZONE:http://localhost:8761/eureka}
+
+---
+spring:
+  profiles: test-hosts
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: ${SPRING_CLOUD_CONFIG_SERVER_NATIVE_SEARCHLOCATIONS:file:////opt/config-repo}
+  security:
+    user:
+      name: ${SRPING_CLOUD_USER_NAME:config-user-name}
+      password: ${CONFIG_SERVICE_PASSWORD:123}
+
+server:
+  port: ${SERVER_PORT:8888}
+
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_CLIENT_SERVICEURL_DEFAULTZONE:http://localhost:8761/eureka}
+
+

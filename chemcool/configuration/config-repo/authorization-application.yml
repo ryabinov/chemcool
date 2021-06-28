@@ -1,0 +1,59 @@
+spring:
+  application:
+    name: authorization-application
+  jpa:
+    database: postgresql
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:postgresql://localhost:5432/users_autentication
+    username: mick
+    password: mick
+    platform: postgres
+    driver-class-name: org.postgresql.Driver
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            clientId: 337860955376-sp6kmbm17a1plh6k7ci4pgodlevgqp43.apps.googleusercontent.com
+            clientSecret: TCt6ZWtXMpmJoAQ3TBP7UPZ6
+            redirectUri: "http://localhost:8080/authorization-application/oauth2/callback/{registrationId}"
+            scope:
+              - email
+              - profile
+          facebook:
+            clientId: 756235805331827
+            clientSecret: def3a24f5ab021c624b4756c8fcda2ba
+            redirectUri: "{baseUrl}/oauth2/callback/{registrationId}"
+            scope:
+              - email
+              - public_profile
+        provider:
+          facebook:
+            authorizationUri: https://www.facebook.com/v3.0/dialog/oauth
+            tokenUri: https://graph.facebook.com/v3.0/oauth/access_token
+            userInfoUri: https://graph.facebook.com/v3.0/me?fields=id,first_name,middle_name,last_name,name,email,verified,is_verified,picture.width(250).height(250)
+
+server:
+  port: 8090
+  servlet:
+    context-path: /authorization-application/
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+kafka:
+  server: http://localhost:9092
+  groupId: registration.2
+
+app:
+  auth:
+    tokenSecret: 926D96C90030DD58429D2751AC1BDBBC
+    tokenExpirationMsec: 864000000
+  oauth2:
+    authorizedRedirectUris:
+      - http://localhost:3000/oauth2/redirect

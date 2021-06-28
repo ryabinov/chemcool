@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: theory-application
+  cloud:
+    config:
+      uri: http://localhost:8888
+      fail-fast: true
+      password: ${CONFIG_SERVICE_PASSWORD}
+      username: ${CONFIG_SERVICE_USER}

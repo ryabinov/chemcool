@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: tasks-application
+  cloud:
+    config:
+      name: tasks-application
+      discovery:
+        enabled: true
+        service-id: config-service
+      fail-fast: true
+      username: ${SPRING_CLOUD_CONFIG_USERNAME}
+      password: ${SPRING_CLOUD_CONFIG_PASSWORD}
+
+

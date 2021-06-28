@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: two-o-four-eight-application
+  cloud:
+    config:
+      name: two-o-four-eight-application
+      discovery:
+        enabled: true
+        service-id: config-service
+      fail-fast: true
+      retry:
+        initial-interval: 2000
+        max-attempts: 50
+        max-interval: 1000
+      password: ${SPRING_CLOUD_CONFIG_USERNAME}
+      username: ${SPRING_CLOUD_CONFIG_PASSWORD}

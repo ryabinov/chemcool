@@ -1,0 +1,21 @@
+spring:
+  jpa:
+    database: postgresql
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:postgresql://localhost:5432/theory_application
+    username: postgres
+    password: maxon
+    platform: postgres
+    driver-class-name: org.postgresql.Driver
+
+server:
+  port: 0
+  servlet:
+    context-path: /theory-application/
+
+kafka:
+  server: http://localhost:9092
+  groupId: chemistry-theory.1

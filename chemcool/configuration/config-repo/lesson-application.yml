@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: lesson-application
+  jpa:
+    database: postgresql
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  datasource:
+      url: jdbc:postgresql://localhost:5432/lessons
+      username: mick
+      password: mick
+      platform: postgres
+      driver-class-name: org.postgresql.Driver
+
+server:
+  port: 0
+  servlet:
+    context-path: /lesson-application/
+
+kafka:
+  server: http://localhost:9092
+  chemistryLessonGroupId: chemistry-lesson.1
+  chemFixedAnswerGroupId: chemistry-answer.1
+  chemSingleSelectGroupId: chemistry-singleSelect.1
+  theoryGroupId: theory.1
+  chemEquationsGroupId: chemistry-equations.1
+  chemMatchesGroupId: chemistry-matches.1
+

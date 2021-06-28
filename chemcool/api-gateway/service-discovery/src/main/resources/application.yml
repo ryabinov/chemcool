@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: service-discovery
+server:
+  port: ${SERVER_PORT:8761}
+
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+
+---
+spring:
+  profiles: test-localhost
+server:
+  port: ${SERVER_PORT:8761}
+
+---
+spring:
+  profiles: test-hosts
+server:
+  port: ${SERVER_PORT:8761}
+
+---
+spring:
+  profiles: test-integration
+server:
+  port: ${SERVER_PORT:8761}

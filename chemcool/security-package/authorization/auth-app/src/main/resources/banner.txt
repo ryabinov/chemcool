@@ -1,0 +1,9 @@
+
+${AnsiColor.MAGENTA}   ____   _                        ${AnsiColor.GREEN}    ______                 __
+${AnsiColor.MAGENTA}  / ___| | |__     ___   _ __ ___  ${AnsiColor.GREEN}   / ____/ ____   ____    / /
+${AnsiColor.MAGENTA} | |     | '_ \   / _ \ | '_ ` _ \ ${AnsiColor.GREEN}  / /     / __ \ / __ \  / /
+${AnsiColor.MAGENTA} | |___  | | | | |  __/ | | | | | |${AnsiColor.GREEN} / /___  / /_/ // /_/ / / /
+${AnsiColor.MAGENTA}  \____| |_| |_|  \___| |_| |_| |_|${AnsiColor.GREEN} \____/  \____/ \____/ /_/${AnsiColor.DEFAULT}
+${AnsiColor.MAGENTA}=${AnsiColor.GREEN}=${AnsiColor.MAGENTA}=${AnsiColor.GREEN}=${AnsiColor.MAGENTA}=${AnsiColor.GREEN}=${AnsiColor.MAGENTA}=${AnsiColor.GREEN}=${AnsiColor.MAGENTA}=${AnsiColor.GREEN}=${AnsiColor.MAGENTA}=${AnsiColor.GREEN}=${AnsiColor.MAGENTA}=${AnsiColor.GREEN}=${AnsiColor.MAGENTA}=${AnsiColor.GREEN}=${AnsiColor.MAGENTA}=${AnsiColor.GREEN}=${AnsiColor.MAGENTA}=${AnsiColor.GREEN}=${AnsiColor.MAGENTA}=${AnsiColor.GREEN}=${AnsiColor.MAGENTA}=${AnsiColor.GREEN}=${AnsiColor.MAGENTA}=${AnsiColor.GREEN}=${AnsiColor.MAGENTA}=${AnsiColor.GREEN}=${AnsiColor.MAGENTA}=${AnsiColor.GREEN}=${AnsiColor.MAGENTA}=${AnsiColor.GREEN}=${AnsiColor.MAGENTA}=${AnsiColor.GREEN}=${AnsiColor.MAGENTA}=${AnsiColor.GREEN}=${AnsiColor.MAGENTA}=${AnsiColor.GREEN}=${AnsiColor.MAGENTA}=${AnsiColor.GREEN}=${AnsiColor.MAGENTA}=${AnsiColor.GREEN}=${AnsiColor.MAGENTA}=${AnsiColor.GREEN}=${AnsiColor.MAGENTA}=${AnsiColor.GREEN}=${AnsiColor.MAGENTA}=${AnsiColor.GREEN}=${AnsiColor.MAGENTA}=${AnsiColor.GREEN}=${AnsiColor.MAGENTA}=${AnsiColor.GREEN}=${AnsiColor.MAGENTA}=${AnsiColor.GREEN}=${AnsiColor.MAGENTA}=${AnsiColor.GREEN}=${AnsiColor.MAGENTA}=${AnsiColor.GREEN}=${AnsiColor.MAGENTA}=${AnsiColor.GREEN}=${AnsiColor.MAGENTA}=${AnsiColor.GREEN}=${AnsiColor.MAGENTA}=${AnsiColor.GREEN}=${AnsiColor.DEFAULT}
+
+Spring Boot ${spring-boot.version}

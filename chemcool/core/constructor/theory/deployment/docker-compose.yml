@@ -1,0 +1,91 @@
+version: '3'
+
+services:
+
+  service-discovery:
+    image: service-discovery
+    container_name: service-discovery
+    hostname: service-discovery
+    build:
+      context: ../../../../api-gateway/service-discovery
+      dockerfile: ../../../../api-gateway/service-discovery/Dockerfile
+    environment:
+      - SPRING_PROFILES_ACTIVE=default
+    ports:
+    - 8761:8761
+
+  web-api-gateway:
+    image: web-api-gateway
+    container_name: web-api-gateway
+    hostname: web-api-gateway
+    build:
+      context: ../../../../api-gateway/web-api-gateway
+      dockerfile: Dockerfile
+    environment:
+      - SPRING_PROFILES_ACTIVE=default
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://service-discovery:8761/eureka/
+    volumes:
+      - ../../../../test_secrets:/run/secrets
+    links:
+      - service-discovery
+    depends_on:
+      - service-discovery
+    ports:
+    - 8080:8080
+
+  theory-application:
+    image: theory-application
+    container_name: theory-application
+    build:
+      context: ../theory-application
+      dockerfile: ../theory-application/Dockerfile
+    environment:
+      - SPRING_PROFILES_ACTIVE=default
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://service-discovery:8761/eureka/
+    volumes:
+      - ../../../../test_sercets:/run/secrets
+    links:
+      - service-discovery
+    depends_on:
+      - web-api-gateway
+
+
+  postgres:
+    image: postgres
+    restart: always
+    container_name: postgres
+    ports:
+      - 5432:5432
+    volumes:
+      - ../../theory/deployment/scripts/role.sql:/docker-entrypoint-initdb.d/init_a_role.sql
+      - ../../theory/deployment/scripts/theory-application.sql:/docker-entrypoint-initdb.d/init_theory_application.sql
+    environment:
+      POSTGRES_PASSWORD: postgres
+
+  manager:
+    image: 'sheepkiller/kafka-manager'
+    container_name: manager-kafka
+    ports:
+      - '9000:9000'
+    environment:
+      - ZK_HOSTS=zookeeper:2181
+    depends_on:
+      - zookeeper
+
+  zookeeper:
+    image: wurstmeister/zookeeper
+    expose:
+      - "2181"
+
+  kafka:
+    image: wurstmeister/kafka
+    container_name: kafka
+    ports:
+      - 9092:9092
+    depends_on:
+      - zookeeper
+    links:
+      - zookeeper
+    environment:
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_HOST_NAME: kafka
